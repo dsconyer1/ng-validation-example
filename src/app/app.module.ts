@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { TemplatedModule } from './features/templated/templated.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FourOhFourComponent } from './components/four-oh-four/four-oh-four.component';
+import { CustomAgeValidator } from './features/templated/custom-age.validator';
 
 @NgModule({
   declarations: [

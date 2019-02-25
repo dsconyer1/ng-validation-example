@@ -1,3 +1,70 @@
-<p>
-  templated works!
-</p>
+<form #demoForm="ngForm"
+      (submit)="submit(demoForm)">
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Email address</label>
+    <input type="email"
+           name="email"
+           required
+           email
+           #email="ngModel"
+           ngModel
+           class="form-control"
+           id="exampleFormControlInput1"
+           placeholder="name@example.com">
+
+    <div *ngIf="email.invalid && email.touched"
+         class="alert alert-danger">
+      <b>Errors:</b>
+      <div *ngIf="email.errors['required']">We need your email, please.</div>
+      <div *ngIf="email.errors['email']">That doesn't look like an email address.</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Example select</label>
+    <select class="form-control"
+            #option
+            name="option"
+            required
+            ngModel
+            id="exampleFormControlSelect1">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="age">Age</label>
+    <input type="number"
+           name="age"
+           #age="ngModel"
+           ngModel
+           max="120"
+           min="0"
+           required
+           appCustomAge
+           class="form-control">
+    <div *ngIf="age.invalid && age.touched"
+         class="alert alert-danger">
+      <b>Errors:</b>
+      <div *ngIf="age.errors['required']">We need your age, please.</div>
+      <div *ngIf="age.errors['customAge']">
+        {{ age.errors['customAge']['message']}}
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Example textarea</label>
+    <textarea class="form-control"
+              name="text"
+              #text
+              ngModel
+              id="exampleFormControlTextarea1"
+              rows="3"></textarea>
+  </div>
+  <input type="submit"
+         [disabled]="!demoForm.valid"
+         class="btn btn-success"
+         value="Submit">
+</form>
